@@ -19,10 +19,10 @@ module.exports = app => {
 
         
         const now = new Date()
-        const sec = Math.floor(Date.now() / 1000)
+        const sec = Math.floor(Date.now() / 1000) // Obter segundos
         let exp = new Date(now)
         exp.setDate(exp.getDate() + 1)
-        exp.setHours(1, 0, 0)
+        exp.setHours(1, 0, 0) // Token expirará as 1 da manhã do dia seguinte
 
         const payload = {
             id: user.id,
@@ -31,7 +31,6 @@ module.exports = app => {
             admin: user.admin,
             iat: sec,
             exp: Math.floor(Date.parse(exp) / 1000)
-            //exp: now + (60 * 60 * 24 * 3)
         }
 
         res.json({
